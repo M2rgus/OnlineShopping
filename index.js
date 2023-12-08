@@ -27,13 +27,18 @@ const server = http.createServer(function(request, response) {
                     <form id="calcForm" method="post" action="http://localhost:3000">Customer and purchase info: <br><br>
                         <label for="html">Your age?</label><br>
                         <input type="number" name="customerAge"/><br>
-                        <label for="html">Which product do you wish to buy? (A, B, C, D)</label><br>
-                        <input type="text" name="productType" /><br>
+                        <label for="product">Which product do you wish to buy?</label><br>
+                        <select id="product" name="productType">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        </select><br>
                         <label for="html">Have you returned any items in the past?</label><br>
                         <input type=checkbox name="hasReturns" /><br>
                         <label for="html">Are you a loyalty member?</label><br>
                         <input type=checkbox name="isLoyaltyMember" /><br>
-                        <input type="submit" value="Add" />
+                        <input type="submit" value="Buy" />
                     </form>
                 </body>
             </html>`

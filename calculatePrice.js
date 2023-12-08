@@ -1,9 +1,9 @@
 function applyAgeRestrictions(customerAge, productType) {
-    if (customerAge <= 21) {
+    if (customerAge < 21) {
         return false;
     }
 
-    if (customerAge >= 21 && customerAge <= 25 && ["C", "D"].includes(productType)) {
+    if (customerAge >= 21 && customerAge <= 25 && ["D", "C"].includes(productType)) {
         return false;
     }
 
@@ -21,7 +21,7 @@ function applyProductPriceRules(basePrice, productType, hasReturns, isLoyaltyMem
     }
 
     if (isLoyaltyMember) {
-        basePrice *= 0.10;
+        basePrice *= 0.90;
     }
 
     return basePrice;
@@ -46,7 +46,12 @@ function calculateProductPrice(customerAge, productType, hasReturns, isLoyaltyMe
         return `Maximum price exceeded: $${MAX_PRODUCT_PRICE}`;
     }
 
-    return basePrice;
+    return Math.round(basePrice);
 }
 
-exports.calculateProductPrice = calculateProductPrice;
+module.exports = {
+    applyAgeRestrictions,
+    applyProductPriceRules,
+    generateProductPrice,
+    calculateProductPrice
+};
